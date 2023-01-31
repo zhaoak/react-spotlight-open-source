@@ -5,8 +5,12 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <Link to="/table">Table</Link>
-        <Link to="/charts">Charts</Link>
+        <Link to="/table" className="button">
+          Table
+        </Link>
+        <Link to="/charts" className="button">
+          Charts
+        </Link>
       </nav>
       <Switch>
         <Route path="/table">
@@ -14,6 +18,13 @@ function App() {
         </Route>
         <Route path="/charts">
           <h1>Chart Library</h1>
+        </Route>
+        <Route path="/">
+          <section className="columns">
+            <div className="message is-info column is-half is-offset-one-quarter">
+              Please choose either Table or Charts.
+            </div>
+          </section>
         </Route>
       </Switch>
     </div>
