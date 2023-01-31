@@ -1,6 +1,9 @@
 import { Link, Route, Switch } from 'react-router-dom';
 import './App.css';
 
+import { Table, Column, HeaderCell, Cell } from 'rsuite-table';
+import 'rsuite-table/dist/css/rsuite-table.css';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +16,18 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+// rsuite-table table/data setup and configuration
+const tableData = [
+  { id: 1, name: 'Tux', product: 'Linux' },
+  { id: 2, name: 'Bud Ice Penguin', product: 'Bud Ice Beer' },
+  { id: 3, name: 'K.C. Penguin', product: 'Kid Cuisine' },
+  { id: 4, name: 'Iceburgh', product: 'Pittsburgh Penguins (hockey team)' },
+  { id: 5, name: 'The Amigos', product: 'Happy Feet (movie)' },
+  { id: 6, name: 'Cody Maverick', product: "Surf's Up (movie)" },
+  { id: 7, name: 'PenPen', product: 'Neon Genesis Evangelion (TV show)' },
+];
+
+// chartjs chart/data configuration
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const options = {
@@ -60,7 +75,24 @@ function App() {
       </nav>
       <Switch>
         <Route path="/table">
-          <h1>Table Libary</h1>
+          <h1 className="title is-1 is-warning">Interesting...Very Interesting!!</h1>
+          <Table data={tableData} bordered cellBordered height={500} width={700}>
+            <Column width={50} fixed align="center">
+              <HeaderCell>ID</HeaderCell>
+              <Cell dataKey="id" />
+            </Column>
+
+            <Column width={300} align="center">
+              <HeaderCell>Name</HeaderCell>
+              <Cell dataKey="name" />
+            </Column>
+
+            <Column width={400} align="center">
+              <HeaderCell>Product</HeaderCell>
+              <Cell dataKey="product" />
+            </Column>
+          </Table>
+          <h1 className="title is-3 is-danger">Do you see the connection yet?!</h1>
         </Route>
         <Route path="/charts">
           <h1 className="title is-1">LOOK AT THIS!!</h1>
